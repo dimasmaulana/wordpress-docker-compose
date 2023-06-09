@@ -30,10 +30,10 @@ services:
     volumes:
       - ./wordpress:/var/www/html
     working_dir: /var/www/html
-    depends_on:
-      - db
+    links:
+      - db:mariadb
     environment:
-      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_HOST: mariadb
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: ${MARIADB_ROOT_PASSWORD}
       WORDPRESS_DB_NAME: wordpress
