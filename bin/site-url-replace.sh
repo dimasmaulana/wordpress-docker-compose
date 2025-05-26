@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 if [ $# -eq 0 ]; then
 	me=$(basename "$0")
-	echo "No arguments supplied"
+	echo "Error: No arguments supplied"
 	echo ""
 	echo "Usage:"
-	echo "$me <new site url>"
+	echo "  $me <new-site-url>"
 	echo ""
-	exit
+	echo "Description:"
+	echo "  Updates the site URL in a WordPress installation."
+	echo ""
+	echo "Example:"
+	echo "  $me https://example.com"
+	exit 1
 fi
 SCRIPT_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 cd $SCRIPT_DIR
