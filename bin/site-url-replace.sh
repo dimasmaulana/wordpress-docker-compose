@@ -11,11 +11,11 @@ fi
 SCRIPT_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 cd $SCRIPT_DIR
 cd ..
-docker-compose run --rm wpcli wp maintenance-mode activate
-SITE_URL=$(docker-compose run --rm wpcli wp option get siteurl)
+docker compose run --rm wpcli wp maintenance-mode activate
+SITE_URL=$(docker compose run --rm wpcli wp option get siteurl)
 SITE_URL="$(echo -e "${SITE_URL}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
 echo $SITE_URL
 echo ${#SITE_URL}
 echo $1
-docker-compose run --rm wpcli wp search-replace $SITE_URL $1
-docker-compose run --rm wpcli wp maintenance-mode deactivate
+docker compose run --rm wpcli wp search-replace $SITE_URL $1
+docker compose run --rm wpcli wp maintenance-mode deactivate
